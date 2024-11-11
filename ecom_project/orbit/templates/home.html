@@ -1,0 +1,98 @@
+{% extends 'master.html' %}
+{% load static %} 
+
+{% block title %}Home - SportsX{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+{% endblock %}
+
+        <!-- Navigation-->
+{% block content %}
+
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
+        
+        <!--Carousal-->
+        <div class="position-relative text-center main-img">
+            <img src="static/img/homepage 5.jpg" class="img-fluid" alt="home image">
+            <div class="position-absolute" style="top: 45%; left: 6%; width: 500px;">
+                <!-- <span class="text-white" style="opacity: 0.5; font-size: 30px; font-family: Verdana, sans-serif;">"Victory is in the mind, the body simply follows"</span> -->
+                <h1 class="display-3 text-uppercase text-white" style="margin-top: -105px;">"Victory is in the mind, the body simply follows"</h1>
+            </div>
+        </div>
+
+        <!-- Flickity -->
+            <div class="image-container" >
+                <img src="static/img/flick_backgrounddd.jpg" alt="background-image" class="background-image">
+                <div class="explore">EXPLORE BY ACTIVITY</div>
+                <div class="carousel" data-flickity='{ "cellAlign": "left", "wrapAround": true, "autoPlay": 1500 }'>
+                    <a href="{% url 'football' %}">
+                    <div class="carousel-cell" >
+                        <img src="static/img/football-image.jpg" alt="footmall-image" style="width: 100%; height: 100%; object-fit: cover;" >
+                        <div class="text-overlay">FOOTBALL</div>
+                    </div></a>
+                    <a href="{% url 'football' %}">
+                    <div class="carousel-cell" ><img src="static/img/Cricket-image.webp" alt="footmall-image" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="text-overlay">CRICKET</div>
+                    </div></a>
+                    <a href="{% url 'basketball' %}">
+                    <div class="carousel-cell" ><img src="static/img/Basketball-image.webp" alt="footmall-image" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="text-overlay">BASKETBALL</div>
+                    </div></a>
+                    <div class="carousel-cell" ><img src="static/img/Running-image.webp" alt="footmall-image" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="text-overlay">RUNNING</div>
+                    </div>
+                    <div class="carousel-cell" ><img src="static/img/Volleyball-image.webp" alt="footmall-image" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="text-overlay">VOLLEYBALL</div>
+                    </div>
+                </div>
+            </div> 
+
+        <!-- Banner -->
+
+        <div>
+            <img src="static/img/make-an-impact.webp" alt="makeanimpact img" style="margin-top: 50px; width: 100%;">
+        </div>
+        <br><br>
+
+        <!-- Footer-->
+
+        {% block extra_js %}
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core theme JS-->
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js" defer></script>
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+        let alertBox = document.querySelector('.alert');
+        let contentDiv = document.querySelector('.main-img'); // replace with the actual class or ID of the div below the navbar
+
+        if (alertBox) {
+            alertBox.classList.add('with-alert'); // Add space when alert is visible
+
+            setTimeout(function() {
+                alertBox.style.display = 'none';
+                alertBox.classList.remove('with-alert'); // Remove space after alert disappears
+            }, 2000); // Alert disappears after 1 second
+        }
+    });
+            </script>{% endblock %}
+{% endblock %}
+
+
+

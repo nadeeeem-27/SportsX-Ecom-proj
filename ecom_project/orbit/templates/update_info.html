@@ -1,0 +1,205 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href=" {% static 'assets/favicon.ico' %}" />
+        <style>
+           body {
+            align-items: center;
+  background: url("{% static 'img/homepage 6.jpg' %}") no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  opacity: 0.95;
+}
+
+.form {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 580px;
+  padding: 20px;
+  width: 500px;
+}
+
+.title {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.subtitle {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.input-container {
+  height: 30px;
+  position: relative;
+  width: 100%;
+}
+
+.ic1 {
+  margin-top: 40px;
+}
+
+.ic2 {
+  margin-top: 20px;
+}
+
+.input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+
+
+.placeholder {
+  color: #65657b;
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  
+  top: 20px;
+}
+
+.submit {
+  background-color: rgb(180, 187, 192);
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  font-size: 18px;
+  height: 45px;
+  margin-top: 20px;
+  margin-left: 18px;
+  outline: 0;
+  text-align: center;
+  width: 92%;
+  
+}
+
+.submit:active {
+  background-color: #06b;
+}
+
+.error {
+    color: #e4716a; /* Red color for errors */
+}
+
+table {
+    border-spacing: 12px 15px;  /* Horizontal and vertical space between cells */
+}
+
+
+        </style>
+</head>
+<body>
+        
+<form method="post">
+    {% csrf_token %}
+    <div class="form">
+        <div class="title">Welcome</div>
+        <div class="subtitle">Let's update your Info!</div>
+        <table>
+            <tr>
+                <td>
+                    <div class="input-container ic1">
+                        {{ form.phone }}  <!-- Render phone field -->
+                        {% if form.phone.errors %}
+                            <div class="error">{{ form.phone.errors }}</div>
+                        {% endif %}
+                    </div>
+                </td>
+                <td>
+                    <div class="input-container ic1">
+                        {{ form.city }}  <!-- Render city field -->
+                        {% if form.city.errors %}
+                            <div class="error">{{ form.city.errors }}</div>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="input-container ic2">
+                        {{ form.address1 }}  <!-- Render address1 field -->
+                        {% if form.address1.errors %}
+                            <div class="error">{{ form.address1.errors }}</div>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="input-container ic2">
+                        {{ form.address2 }}  <!-- Render address2 field -->
+                        {% if form.address2.errors %}
+                            <div class="error">{{ form.address2.errors }}</div>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                
+                <td colspan="2">
+                    <div class="input-container ic2">
+                        {{ form.state }}  <!-- Render state field -->
+                        {% if form.state.errors %}
+                            <div class="error">{{ form.state.errors }}</div>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="input-container ic2">
+                        {{ form.zipcode }}  <!-- Render zipcode field -->
+                        {% if form.zipcode.errors %}
+                            <div class="error">{{ form.zipcode.errors }}</div>
+                        {% endif %}
+                    </div>
+                </td>
+                <td>
+                    <div class="input-container ic2">
+                        {{ form.country }}  <!-- Render country field -->
+                        {% if form.country.errors %}
+                            <div class="error">{{ form.country.errors }}</div>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+        {% if form.non_field_errors %}
+        <div class="error">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+        
+        <button type="text" class="submit">submit</button>
+    </div>
+</form>
+</body>
+</html>
